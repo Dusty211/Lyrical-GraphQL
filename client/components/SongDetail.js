@@ -16,14 +16,14 @@ class SongDetail extends Component {
             <div>
                 <Link to="/">Back</Link>
                 <h3>{ song.title }</h3>
-                <LyricList />
+                <LyricList lyrics={song.lyrics} />
                 <LyricCreate songId={this.props.params.id}/>
             </div>
         );
     }
 }
 
-
+//syntax allows to pass params to a named query:
 export default graphql(fetchSong, {
     options: (props) => { return { variables: { id: props.params.id } } }
 })(SongDetail);
