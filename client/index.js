@@ -2,7 +2,7 @@ import './style/style.css'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, hashHistory, IndexRoute } from 'react-router';
-import ApolloClient from 'apollo-client';
+import ApolloClient from 'apollo-client'; //Apollo Store - gets instantiated and passed into Provider
 import { ApolloProvider } from 'react-apollo';
 
 import App from './components/App';
@@ -11,7 +11,10 @@ import SongCreate from './components/SongCreate';
 import SongDetail from './components/SongDetail';
 
 
-const client = new ApolloClient({});
+const client = new ApolloClient({
+  //so that you don't have to make a followup query request to get updated render
+  dataIdFromObject: o => o.id 
+});
 
 const Root = () => {
   return (
